@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>BooksApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>BooksApp</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<% if params[:locale] == 'en' %>
+<%= link_to t('translate.japanese'), "#{params[:url]}?locale=ja" %>
+<% elsif params[:locale] == 'ja' %>
+<%= link_to t('translate.english'), "#{params[:url]}?locale=en" %>
+<% end %>
+
+
+
+<body>
+  <%= yield %>
+</body>
+
 </html>
