@@ -8,16 +8,12 @@ ja:
         memo: メモ
         author: 著者
         picture : 写真
-      submit:
-        create: "登録する"
-        update: "更新する"
-        submit: "保存する"
 
   helpers:
     submit:
-      create: "登録する"
-      update: "更新する"
-      submit: "保存する"
+      create: 登録する
+      update: 更新する
+      submit: 保存する
 
   newbook: 新規登録
   editingbook: 書籍編集
