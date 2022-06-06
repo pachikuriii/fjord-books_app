@@ -12,7 +12,7 @@ ja:
         create: "登録する"
         update: "更新する"
         submit: "保存する"
-        
+
   helpers:
     submit:
       create: "登録する"
@@ -34,4 +34,7 @@ ja:
     created: 書籍は正常に登録されました。
     updated: 書籍は正常に編集されました。
     destroyed: 書籍は正常に削除されました。
+  translate:
+    japanese: 日本語
+    english: 英語
 
