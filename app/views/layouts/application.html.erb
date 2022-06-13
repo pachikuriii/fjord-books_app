@@ -10,9 +10,9 @@
 </head>
 
 <% if params[:locale] == 'en' %>
-<%= link_to t('translate.japanese'), "#{params[:url]}?locale=ja" %>
+<%= link_to t('translate.japanese'), "#{url_for locale:'ja'}" %>
 <% elsif params[:locale] == 'ja' %>
-<%= link_to t('translate.english'), "#{params[:url]}?locale=en" %>
+<%= link_to t('translate.english'), "#{url_for locale: 'en'}" %>
 <% end %>
 
 
