@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_13_073001) do
+ActiveRecord::Schema.define(version: 2022_06_13_120910) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -29,6 +29,10 @@ ActiveRecord::Schema.define(version: 2022_06_13_073001) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.integer "postcode", limit: 7
+    t.string "address"
+    t.text "introduction"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
