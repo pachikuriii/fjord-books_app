@@ -2,18 +2,37 @@
 
 <h1>ユーザー一覧</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>メールアドレス</th>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>自己紹介</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.postcode %></td>
+      <td><%= user.address %></td>
+      <td><%= user.introduction %></td>
+      <td><%= link_to t('views.common.show'), user %></td>
 
 
-<tbody>
-  <% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.postcode %></td>
-    <td><%= user.address %></td>
-    <td><%= user.introduction %></td>
-    </td>
-  </tr>
-  <% end %>
+      </td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+
+
+
 </tbody>
 </table>
