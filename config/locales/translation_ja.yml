@@ -2,19 +2,14 @@ ja:
   activerecord:
     models:
       book: 本  #g
-
-
     attributes:
       book:
         author: 著者  #g
         memo: メモ  #g
         picture: 画像  #g
         title: 題名  #g
-
       user:
         name: 名前
         address: 住所
         postcode: 郵便番号
         introduction: 自己紹介
-
- 
