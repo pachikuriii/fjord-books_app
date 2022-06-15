@@ -10,6 +10,4 @@ Rails.application.routes.draw do
     get 'users', :to => 'users#show', :as => :user_root # Rails 3
   end
 
-  
-
 end
