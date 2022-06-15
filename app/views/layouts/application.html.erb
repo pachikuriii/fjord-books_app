@@ -5,7 +5,6 @@
   <title>BooksApp</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -23,7 +22,6 @@
     <%= link_to t('devise.sessions.new.sign_in'), new_user_session_path, class: 'navbar-link'  %>
     <% end %>
   </p>
-
 
   <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
