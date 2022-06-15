@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
   def configure_permitted_parameters
     # サインアップ時にストロングパラメータを追加
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name postcode address introduction])
@@ -17,6 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def after_sign_out_path_for(_resource_or_scope)
     books_path
   end
