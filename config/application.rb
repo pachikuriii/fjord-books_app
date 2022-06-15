@@ -7,6 +7,8 @@ Bundler.require(*Rails.groups)
 
 module BooksApp
   class Application < Rails::Application
+
+    config.load_defaults 6.1
     # Initialize configuration defaults for originally generated Rails version.
 
     # Configuration for the application, engines, and railties goes here.
