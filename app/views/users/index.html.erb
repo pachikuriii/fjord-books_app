@@ -1,15 +1,14 @@
 <p id="notice"><%= notice %></p>
-<%= link_to "本の一覧へ", books_path %>
-<h1>ユーザー一覧</h1>
-
+<%= link_to t(Book.model_name.human), books_path %>
+<h1><%= User.model_name.human %></h1>
 <table>
   <thead>
     <tr>
-      <th>名前</th>
-      <th>メールアドレス</th>
-      <th>郵便番号</th>
-      <th>住所</th>
-      <th>自己紹介</th>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= User.human_attribute_name(:postcode) %></th>
+      <th><%= User.human_attribute_name(:address) %></th>
+      <th><%= User.human_attribute_name(:introduction) %></th>
     </tr>
   </thead>
 

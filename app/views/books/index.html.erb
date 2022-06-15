@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= link_to "ユーザーの一覧へ", users_path %>
+<%= link_to t(User.model_name.human), users_path %>
 <h1><%= Book.model_name.human %></h1>
 
 <table>
