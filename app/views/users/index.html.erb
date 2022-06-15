@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to "本の一覧へ", books_path %>
 <h1>ユーザー一覧</h1>
 
 <table>
@@ -22,17 +22,12 @@
       <td><%= user.address %></td>
       <td><%= user.introduction %></td>
       <td><%= link_to t('views.common.show'), user %></td>
-
-
       </td>
     </tr>
     <% end %>
 
   </tbody>
 </table>
-
-
-
-
 </tbody>
 </table>
+<%= paginate @users %>
