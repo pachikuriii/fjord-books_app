@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t :books %></h1>
+<h1><%=  t('views.common.all', name: Book.model_name.human) %></h1>
 
 <table>
   <thead>
@@ -14,7 +14,6 @@
     </tr>
 
   </thead>
-
 
   <tbody>
     <% @books.each do |book| %>
