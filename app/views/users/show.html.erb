@@ -1,4 +1,8 @@
 <h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
+<p>
+  <strong><%= User.human_attribute_name(:avatar) %>:</strong><br />
+  <%= image_tag @user.avatar.variant(resize:'200x200').processed if @user.avatar.attached? %>
+</p>
 
 <p>
   <strong><%= User.human_attribute_name(:email) %>:</strong>
@@ -24,6 +28,10 @@
   <strong><%= User.human_attribute_name(:self_introduction) %>:</strong>
   <%= @user.self_introduction %>
 </p>
+
+
+
+
 
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
