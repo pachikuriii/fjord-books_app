@@ -204,6 +204,10 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  translation:
+    languages:
+      japanese: 日本語
+      english: 英語
   views:
     common:
       show: 詳細
