@@ -21,17 +21,17 @@ class User < ApplicationRecord
   has_many :follower_users, through: :followings, source: :follower
 
   # ユーザーをフォローする
-  def follow(other_user_id)
-    active_friendhips.create(following_id: other_user_id)
+  def follow(user_id)
+    friendships.create(following_id: user_id)
   end
 
   # ユーザーをフォロー解除する
-  def unfollow(other_user_id)
-    active_friendships.find_by(followed_id: other_user_id).destroy
+  def unfollow(user_id)
+    friendships.find_by(following_id: user_id).destroy
   end
 
-  # 現在のユーザーがフォローしてたらtrueを返す
-  def following?(_other_user_id)
-    following_users.include?(other_user)
+  # フォローしているかを判定
+  def following?(user)
+    followings.include?(user)
   end
 end
