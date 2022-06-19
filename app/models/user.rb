@@ -19,4 +19,19 @@ class User < ApplicationRecord
 
   has_many :following_users, through: :followers, source: :following
   has_many :follower_users, through: :followings, source: :follower
+
+  # ユーザーをフォローする
+  def follow(other_user_id)
+    active_friendhips.create(following_id: other_user_id)
+  end
+
+  # ユーザーをフォロー解除する
+  def unfollow(other_user_id)
+    active_friendships.find_by(followed_id: other_user_id).destroy
+  end
+
+  # 現在のユーザーがフォローしてたらtrueを返す
+  def following?(_other_user_id)
+    following_users.include?(other_user)
+  end
 end
