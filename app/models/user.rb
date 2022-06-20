@@ -15,19 +15,19 @@ class User < ApplicationRecord
            class_name: 'Friendship',
            foreign_key: 'following_id',
            dependent: :destroy,
-           inverse_of: :following
+           inverse_of: :follower
 
   has_many :following_users, through: :followers, source: :following
   has_many :follower_users, through: :followings, source: :follower
 
   # ユーザーをフォローする
   def follow(user_id)
-    friendships.create(following_id: user_id)
+    followers.create(following_id: user_id)
   end
 
   # ユーザーをフォロー解除する
   def unfollow(user_id)
-    friendships.find_by(following_id: user_id).destroy
+    followers.find_by(following_id: user_id).destroy
   end
 
   # フォローしているかを判定

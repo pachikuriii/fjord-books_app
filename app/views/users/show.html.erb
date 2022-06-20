@@ -33,6 +33,25 @@
   <% end %>
 </p>
 
+<p>
+<% unless @user == current_user %>
+<% if current_user.following?(@user) %>
+  <%= link_to "フォロー外す", friendship_path, method: :delete %>
+<% else %>
+  <%= form_for(@user.followers.build) do |f| %>
+    <%= hidden_field_tag :following_id, @user.id %>
+        <%= f.submit t('button.follow') %>
+     <% end %>
+  <% end %>
+<% end %>
+</p>
+
+
+
+<p>
+  <%= link_to "#{@user.followers.count} #{User.human_attribute_name("followings")}", followings_user_path %> <%= link_to "#{@user.followings.count} #{User.human_attribute_name("followers")}", followers_user_path %>
+</p>
+
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
