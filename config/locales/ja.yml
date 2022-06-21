@@ -206,7 +206,6 @@ ja:
     pm: 午後
   translation:
     languages:
-      japanese: 日本語
       english: English
   views:
     common:
