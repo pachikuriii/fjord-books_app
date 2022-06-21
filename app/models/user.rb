@@ -32,6 +32,6 @@ class User < ApplicationRecord
 
   # フォローしているかを判定
   def following?(user)
-    followings.include?(user)
+    following_users.include?(user)
   end
 end
