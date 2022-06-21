@@ -10,9 +10,9 @@
 </head>
 
 <% if params[:locale] == 'en' %>
-<%= link_to I18n.t("translation.languages.japanese", locale: :ja), url_for(locale:'ja') %>
+<%= link_to t("translation.languages.japanese"), url_for(locale:'ja') %>
 <% elsif params[:locale] == 'ja' %>
-<%= link_to I18n.t("translation.languages.english", locale: :en), url_for(locale:'en') %>
+<%= link_to t("translation.languages.english"), url_for(locale:'en') %>
 <% end %>
 
 <body>

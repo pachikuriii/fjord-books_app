@@ -215,8 +215,7 @@ en:
     pm: pm
   translation:
     languages:
-      japanese: Japanese
-      english: English
+      japanese: 日本語
   views:
     common:
       show: Show
