@@ -213,6 +213,9 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  translation:
+    languages:
+      japanese: 日本語
   views:
     common:
       show: Show
