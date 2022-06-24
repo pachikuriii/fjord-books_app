@@ -32,27 +32,6 @@
     <%= image_tag @user.avatar.variant(resize_to_fill: [150, 150])%>
   <% end %>
 </p>
-<p>
-<% unless @user == current_user %>
-  <% if current_user.following?(@user) %>
-    <%= button_to 'フォローを外す', friendship_path, method: :delete %>
-
-  <% else %>
-      <%= form_for(@user.followers.build) do |f| %>
-        <%= hidden_field_tag :following_id, @user.id %>
-        <%= f.submit 'フォローする' %>
-      <% end %>
-    <% end %>
-<% end %>
-</p>
-
-
-
-
-
-<p>
-  <%= link_to "#{@user.followers.count} #{User.human_attribute_name("followings")}", followings_user_path %> <%= link_to "#{@user.followings.count} #{User.human_attribute_name("followers")}", followers_user_path %>
-</p>
 
 <p>
 <% unless @user == current_user %>
