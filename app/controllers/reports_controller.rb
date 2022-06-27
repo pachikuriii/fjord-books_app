@@ -22,7 +22,6 @@ class ReportsController < ApplicationController
   # POST /reports or /reports.json
   def create
     @report = Report.new(report_params)
-
     respond_to do |format|
       if @report.save
         format.html { redirect_to report_url(@report), notice: "Report was successfully created." }
