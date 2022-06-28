@@ -1,10 +1,10 @@
+<% if @comments.present? %>
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Date:</strong>
   <%= @report.created_at %>
 </p>
-
 
 <p>
   <strong>Title:</strong>
@@ -16,7 +16,12 @@
   <%= @report.content %>
 </p>
 
+<% else %>
+<p>まだコメントはありません</p>
+<% end %>
+
 <%= render 'comments/form', commentable: @report, comment: @comments %>
+
 
 <%= link_to 'Edit', edit_report_path(@report) %> |
 <%= link_to 'Back', reports_path %>
