@@ -1,6 +1,5 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[ show edit update destroy ]
-
+  before_action :set_report, only: %i[show edit update destroy]
   # GET /reports or /reports.json
   def index
     @reports = Report.all
@@ -8,6 +7,9 @@ class ReportsController < ApplicationController
 
   # GET /reports/1 or /reports/1.json
   def show
+    @report = Report.find(params[:id])
+    @comments = @report.comments  #投稿詳細に関連付けてあるコメントを全取得
+    @comment = current_user.comments.build  #投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にCommentオブジェクトを取得
   end
 
   # GET /reports/new
@@ -21,7 +23,7 @@ class ReportsController < ApplicationController
 
   # POST /reports or /reports.json
   def create
-    @report = Report.new(report_params)
+    @report = current_user.reports.build(report_params)
     respond_to do |format|
       if @report.save
         format.html { redirect_to report_url(@report), notice: "Report was successfully created." }
