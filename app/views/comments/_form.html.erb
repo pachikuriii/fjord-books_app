@@ -25,12 +25,15 @@
         
         <td><%= comment.content %></td>
         <td><%= comment.created_at %></td>
+        <td><%= link_to "編集", edit_comment_path(comment) %></td>
+        <td><%= link_to "削除", comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= form_with model: [commentable, Comment.new] do |f| %>  
+<%= form_for([@report, @comment]) do |f| %>  
   <%= f.text_area :content %>  
   <div class="actions">  
     <%= f.submit "コメントする" %>  
