@@ -251,6 +251,8 @@ ja:
       notice: "フォローしました。"
     destroy:
       notice: "フォロー解除しました。"
+  comments:
+    show: コメントする
   # devise-i18n-viewsをオーバーライド
   devise:
     registrations:

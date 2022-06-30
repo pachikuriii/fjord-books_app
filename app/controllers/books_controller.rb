@@ -11,7 +11,11 @@ class BooksController < ApplicationController
 
   # GET /books/1
   # GET /books/1.json
-  def show; end
+  def show
+    @book = Book.find(params[:id])
+    @comments = @book.comments  #投稿詳細に関連付けてあるコメントを全取得
+    @comment = current_user.comments.build  #投稿詳細画面でコメントの投稿を行うので、formのパラメータ用
+  end
 
   # GET /books/new
   def new
@@ -68,8 +72,10 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+
   # Only allow a list of trusted parameters through.
   def book_params
     params.require(:book).permit(:title, :memo, :author, :picture)
   end
+
 end

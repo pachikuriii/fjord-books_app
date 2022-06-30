@@ -25,7 +25,6 @@
         
         <td><%= comment.content %></td>
         <td><%= l(comment.created_at, format: :long) %></td>
-        <td><%= link_to t('views.common.edit'), edit_comment_path(comment) %></td>
         <td><%= link_to t('views.common.destroy'), comment_path(comment), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
 
       </tr>
@@ -36,10 +35,10 @@
 <p> <%= t('views.common.nothing_to_show', name: Comment.model_name.human) %></p>
 <% end %>
 
-<%= form_for([@report, @comment]) do |f| %>  
+<%= form_with model:([commentable, Comment.new]) do |f| %>  
 <textarea name="comment[content]" required></textarea>  
   <div class="actions">  
-    <%= f.submit Comment.model_name.human %>  
+    <%= f.submit t('comments.show') %>  
   </div>  
 <% end %>
 
