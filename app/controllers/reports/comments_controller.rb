@@ -5,3 +5,4 @@ class Reports::CommentsController < CommentsController
       @commentable = Report.find(params[:report_id])  
     end  
 end  
+

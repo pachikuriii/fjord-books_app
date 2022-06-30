@@ -1,9 +1,9 @@
-
+<% if @comments.present? %>
 <table>
   <thead>
     <tr>
-      <th><%= Comment.human_attribute_name(:avatar) %></th>
-      <th><%= Comment.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:avatar) %></th>
+      <th><%= User.human_attribute_name(:name) %></th>
       <th><%= Comment.human_attribute_name(:content) %></th>
       <th><%= Comment.human_attribute_name(:created_at) %></th>
       <th colspan="3"></th>
@@ -24,18 +24,23 @@
         </td>
         
         <td><%= comment.content %></td>
-        <td><%= comment.created_at %></td>
-        <td><%= link_to "編集", edit_comment_path(comment) %></td>
-        <td><%= link_to "削除", comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= l(comment.created_at, format: :long) %></td>
+        <td><%= link_to t('views.common.edit'), edit_comment_path(comment) %></td>
+        <td><%= link_to t('views.common.destroy'), comment_path(comment), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
 
       </tr>
     <% end %>
   </tbody>
 </table>
+<% else %>
+<p> <%= t('views.common.nothing_to_show', name: Comment.model_name.human) %></p>
+<% end %>
 
 <%= form_for([@report, @comment]) do |f| %>  
-  <%= f.text_area :content %>  
+<textarea name="comment[content]" required></textarea>  
   <div class="actions">  
-    <%= f.submit "コメントする" %>  
+    <%= f.submit Comment.model_name.human %>  
   </div>  
 <% end %>
+
+

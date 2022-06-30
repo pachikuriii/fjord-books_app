@@ -1,30 +1,19 @@
-<% if @comments.present? %>
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Date:</strong>
-  <%= @report.created_at %>
+  <strong><%= Report.human_attribute_name(:created_at) %>:</strong>
+  <%= l(@report.created_at, format: :long) %>
 </p>
 
-
 <p>
-  <strong>Title:</strong>
+  <strong><%= Report.human_attribute_name(:title) %>:</strong>
   <%= @report.title %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <strong><%= Report.human_attribute_name(:content) %>:</strong>
   <%= @report.content %>
 </p>
 
-
-<% else %>
-<p>コメントはありません</p>
-<% end %>
-
-
 <%= render 'comments/form', commentable: @report, comment: @comments %>
 
-
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
+<%= link_to t('views.common.edit'), edit_report_path(@report) %> |
+<%= link_to t('views.common.back'), reports_path %>

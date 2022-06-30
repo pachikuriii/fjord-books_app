@@ -16,31 +16,21 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-
       if @comment.update(comment_params)
-        redirect_to request.referer, notice: "コメントを編集しました"
+        redirect_to request.referer, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
       else
-        flash.now[:danger] = "編集に失敗しました"
-      r ender 'edit'
+        render :edit
       end
-
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to reports_url, notice: "Report was successfully destroyed." }
-      format.json { head :no_content }
-    end
-
+    redirect_to request.referer, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
-
   def comment_params
     params.require(:comment).permit(:content)
   end
-
 end
