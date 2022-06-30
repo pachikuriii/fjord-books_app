@@ -13,8 +13,8 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @book = Book.find(params[:id])
-    @comments = @book.comments # 投稿詳細に関連付けてあるコメントを全取得
-    @comment = current_user.comments.build # 投稿詳細画面でコメントの投稿を行うので、formのパラメータ用
+    @comments = @book.comments
+    @comment = current_user.comments.build
   end
 
   # GET /books/new
@@ -29,7 +29,6 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
-
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: t('controllers.common.notice_create', name: Book.model_name.human) }
