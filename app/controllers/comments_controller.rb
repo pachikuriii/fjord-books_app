@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.build(comment_params)
@@ -21,11 +23,11 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-      if @comment.update(comment_params)
-        redirect_to request.referer, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
-      else
-        render :edit
-      end
+    if @comment.update(comment_params)
+      redirect_to request.referer, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -35,6 +37,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:content)
   end

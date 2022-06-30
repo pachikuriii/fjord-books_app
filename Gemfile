@@ -34,6 +34,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'erd'
   gem 'faker'
   gem 'i18n_generators'
   gem 'letter_opener_web'
@@ -43,7 +44,6 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
-  gem 'erd'
 end
 
 group :test do

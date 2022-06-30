@@ -25,7 +25,7 @@
         
         <td><%= comment.content %></td>
         <td><%= l(comment.created_at, format: :long) %></td>
-        <td><%= link_to t('views.common.destroy'), comment_path(comment), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
+
 
       </tr>
     <% end %>
