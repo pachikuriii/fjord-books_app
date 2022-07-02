@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1 or /reports/1.json
   def show
-    @report = Report.eager_load(:user).find(params[:id])
+    @report = Report.eager_load(:user)find(params[:id])
     @comments = @report.comments
     @comment = current_user.comments.build
   end
@@ -70,7 +70,7 @@ class ReportsController < ApplicationController
 
   def ensure_user
     @reports = current_user.reports
-    @report = @reports.find_by(id: params[:id])
+    @report = @reports.eager_load(:user).find_by(id: params[:id])
     redirect_to new_report_path unless @report
   end
 end
