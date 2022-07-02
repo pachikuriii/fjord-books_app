@@ -42,3 +42,11 @@ yarn-debug.log*
 
 /public/uploads/*
 .env
+
+/test
+/config/locales/devise.en.yml
+/app/views/reports
+/app/helpers
+/app/assets/stylesheets
+/.vscode
+
