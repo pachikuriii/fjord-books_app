@@ -35,7 +35,8 @@
   <p><%= t('views.common.nothing_to_show', name: Comment.model_name.human) %></p>
 <% end %>
 
-<%= form_with model:([commentable, Comment.new]) do |f| %>  
+
+<%= form_with model:([commentable, Comment.create]) do |f| %>  
   <textarea name="comment[content]" required></textarea>  
   <div class="actions">  
     <%= f.submit t('comments.show') %>  
