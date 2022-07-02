@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<%= link_to t(Book.model_name.human), books_path %>
+<h1><%= User.model_name.human %></h1>
+<table>
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= User.human_attribute_name(:postcode) %></th>
+      <th><%= User.human_attribute_name(:address) %></th>
+      <th><%= User.human_attribute_name(:introduction) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.postcode %></td>
+      <td><%= user.address %></td>
+      <td><%= user.introduction %></td>
+      <td><%= link_to t('views.common.show'), user %></td>
+      </td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>
+</tbody>
+</table>
+<%= paginate @users %>
