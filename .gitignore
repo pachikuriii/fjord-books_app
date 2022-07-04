@@ -42,3 +42,7 @@ yarn-debug.log*
 
 /public/uploads/*
 .env
+app/assets
+.vscode
+app/helpers
+test
