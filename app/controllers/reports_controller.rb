@@ -4,15 +4,14 @@ class ReportsController < ApplicationController
   before_action :ensure_user, only: %i[edit update destroy]
   # GET /reports or /reports.json
   def index
-    @reports = Report.eager_load(:user).all
+    @reports = Report.includes(:user).all
   end
 
   # GET /reports/1 or /reports/1.json
   def show
-    @report = Report.eager_load(:user).find(params[:id])
+    @report = Report.includes(:user, :comments).find(params[:id])
     @comments = @report.comments
     @comment = current_user.comments.build
-    
   end
 
   # GET /reports/new
