@@ -12,6 +12,7 @@ class ReportsController < ApplicationController
     @report = Report.eager_load(:user).find(params[:id])
     @comments = @report.comments
     @comment = current_user.comments.build
+    
   end
 
   # GET /reports/new

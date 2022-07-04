@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   resources :books
   
   resources :books do
-    resources :comments, only: [:create], shallow: true, module: :books
+    resources :comments, only: %i[create edit update destroy], module: :books
   end 
 
   resources :reports do
-    resources :comments, only: [:create], shallow: true, module: :reports
+    resources :comments, only: %i[create edit update destroy], module: :reports
   end 
 
   resources :users, only: %i[index show] do

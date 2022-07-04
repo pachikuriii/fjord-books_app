@@ -1,44 +1,11 @@
-<% if @comments.present? %>
-  <table>
-    <thead>
-      <tr>
-        <th><%= User.human_attribute_name(:avatar) %></th>
-        <th><%= User.human_attribute_name(:name) %></th>
-        <th><%= Comment.human_attribute_name(:content) %></th>
-        <th><%= Comment.human_attribute_name(:created_at) %></th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% commentable.comments.each do |comment| %>
-        <tr>
-          <td>
-            <%= image_tag User.find(comment.user_id).avatar.variant(resize_to_fill: [30, 30]) if User.find(comment.user_id).avatar.attached? %>
-          </td>
+<%= form_with model:[commentable, @comment] do |form| %>
 
-          <td>
-            <% if User.find(comment.user_id).name.empty? %>
-              <%= User.find(comment.user_id).email %>
-            <% else %>
-              <%= User.find(comment.user_id).name %>
-            <% end %>
-          </td>
+  <div class="field">
+     <textarea name="comment[content]" required><%= @comment.content %></textarea>  
+  </div>
 
-          <td><%= comment.content %></td>
-          <td><%= l(comment.created_at, format: :long) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-<% else %>
-  <p><%= t('views.common.nothing_to_show', name: Comment.model_name.human) %></p>
-<% end %>
-
-
-<%= form_with model:([commentable, comment.create]) do |f| %>  
-  <textarea name="comment[content]" required></textarea>  
-  <div class="actions">  
-    <%= f.submit t('comments.show') %>  
-  </div>  
+  <div class="actions">
+   <%= form.submit t('comments.show') %> 
+  </div>
+  
 <% end %>
