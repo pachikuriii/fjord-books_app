@@ -36,19 +36,19 @@
 <p>
 <% unless @user == current_user %>
   <% if current_user.following?(@user) %>
-    <%= button_to 'フォロー解除', friendship_path(@user), method: :delete %>
+    <%= button_to Friendship.human_attribute_name(:unfollow), friendship_path(@user), method: :delete %>
   <% else %>
-    <%= button_to 'フォローする', friendships_path(@user), method: :post %>
+    <%= button_to Friendship.human_attribute_name(:follow), friendships_path(@user), method: :post %>
   <% end %>
 <% end %>
 </p>
 
 <p>
   <%= link_to followings_user_path(@user) do %>
-    <span>フォロー<%= @user.followings.count %></span>
+    <span><%= Friendship.human_attribute_name(:following_num) %> <%= @user.followings.count %></span>
   <% end %>&nbsp;
   <%= link_to followers_user_path(@user) do %>
-    <span>フォロワー<%= @user.followers.count %></span>
+    <span><%= Friendship.human_attribute_name(:follower_num) %> <%= @user.followers.count %></span>
   <% end %>
 </p>
 

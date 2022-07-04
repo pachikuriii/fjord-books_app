@@ -1,4 +1,4 @@
-<h1><%= User.human_attribute_name(:all_followings) %></h1>
+<h1><%= Friendship.human_attribute_name(:all_followings) %></h1>
 
 <% if @users.exists? %>
     <table>
@@ -25,7 +25,7 @@
       </tbody>
     </table>
 <% else %>
-  <p>ユーザーはいません</p>
+   <%= t('views.common.not_exist', model: User.model_name.human) %>
 <% end %>
 
 <%= link_to t('views.common.back'), user_path %>
