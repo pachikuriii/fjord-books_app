@@ -59,7 +59,7 @@
   <p><%= t('views.common.nothing_to_show', name: Comment.model_name.human) %></p>
 <% end %>
 
-<%= render 'comments/form', commentable: @book, comment: @comments %>
+<%= render 'comments/form', commentable: @book %>
 
 <%= link_to t('views.common.edit'), edit_book_path(@book) %> |
 <%= link_to t('views.common.back'), books_path %>
