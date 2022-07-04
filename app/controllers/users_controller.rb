@@ -12,12 +12,12 @@ class UsersController < ApplicationController
   end
 
   def followings
-    user = User.find(params[:id])
-    @users = user.followings
+    user = User.includes(avatar_attachment: :blob).find(params[:id])
+    @users = user.followings.with_attached_avatar
   end
 
   def followers
     user = User.find(params[:id])
-    @users = user.followers
+    @users = user.followers.with_attached_avatar
   end
 end
