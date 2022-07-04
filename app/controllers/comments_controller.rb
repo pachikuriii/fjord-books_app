@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to polymorphic_url([@commentable]), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      render :new
+      redirect_to polymorphic_url([@commentable])
     end
   end
 
