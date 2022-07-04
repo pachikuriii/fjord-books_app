@@ -10,11 +10,7 @@ class CommentsController < ApplicationController
       redirect_to polymorphic_url(@commentable)
     end
   end
-
-  def new
-    @comment = Comment.new
-  end
-
+  
   def edit
     @comment = Comment.find(params[:id])
   end
