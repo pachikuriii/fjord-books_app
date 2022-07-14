@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       redirect_to polymorphic_url(@commentable)
     end
   end
-  
+
   def edit
     @comment = Comment.find(params[:id])
   end
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to polymorphic_url(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
     else
-      redirect_to edit_polymorphic_url([@report, comment] )
+      redirect_to edit_polymorphic_url([@report, comment])
     end
   end
 
