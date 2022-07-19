@@ -1,23 +1,17 @@
-<h1><%= t('views.common.title_show', name: Book.model_name.human) %></h1>
-
+<h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
 <p>
-  <strong><%= Book.human_attribute_name(:title) %>:</strong>
-  <%= @book.title %>
+  <strong><%= Report.human_attribute_name(:created_at) %>:</strong>
+  <%= l(@report.created_at, format: :long) %>
 </p>
 
 <p>
-  <strong><%= Book.human_attribute_name(:memo) %>:</strong>
-  <%= @book.memo %>
+  <strong><%= Report.human_attribute_name(:title) %>:</strong>
+  <%= @report.title %>
 </p>
 
 <p>
-  <strong><%= Book.human_attribute_name(:author) %>:</strong>
-  <%= @book.author %>
-</p>
-
-<p>
-  <strong><%= Book.human_attribute_name(:picture) %>:</strong>
-  <%= image_tag(@book.picture_url) if @book.picture.present? %>
+  <strong><%= Report.human_attribute_name(:content) %>:</strong>
+  <%= @report.content %>
 </p>
 
 <% if @comments.present? %>
@@ -48,8 +42,9 @@
 
           <td><%= comment.content %></td>
           <td><%= l(comment.created_at, format: :long) %></td>
-          <td><%= link_to t('views.common.edit'), edit_polymorphic_url([@book, comment] ) %></td>
-          <td><%= link_to t('views.common.destroy'), polymorphic_url([@book, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
+           
+          <td><%= link_to t('views.common.edit'), edit_polymorphic_url([@report, comment] ) %></td>
+          <td><%= link_to t('views.common.destroy'), polymorphic_url([@report, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
         </tr>
       <% end %>
     </tbody>
@@ -59,7 +54,7 @@
   <p><%= t('views.common.nothing_to_show', name: Comment.model_name.human) %></p>
 <% end %>
 
-<%= render 'comments/form', commentable: @book %>
+<%= render 'comments/form', commentable: @report %>
 
-<%= link_to t('views.common.edit'), edit_book_path(@book) %> |
-<%= link_to t('views.common.back'), books_path %>
+<%= link_to t('views.common.edit'), edit_report_path(@report) %> |
+<%= link_to t('views.common.back'), reports_path %>

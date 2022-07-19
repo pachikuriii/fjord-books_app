@@ -11,7 +11,10 @@ class BooksController < ApplicationController
 
   # GET /books/1
   # GET /books/1.json
-  def show; end
+  def show
+    @comments = @book.comments
+    @comment = current_user.comments.build
+  end
 
   # GET /books/new
   def new
@@ -25,7 +28,6 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
-
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: t('controllers.common.notice_create', name: Book.model_name.human) }

@@ -1,0 +1,11 @@
+<%= form_with model:[commentable, @comment] do |form| %>
+
+  <div class="field">
+     <textarea name="comment[content]" required><%= @comment.content %></textarea>  
+  </div>
+
+  <div class="actions">
+   <%= form.submit t('comments.show') %> 
+  </div>
+  
+<% end %>
