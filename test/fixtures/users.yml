@@ -9,12 +9,11 @@ alice:
   name: alice
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
-
 bob:
   email: bob@example.com
   name: bob
 
 carol:
   email: carol@example.com
-  name: ''
+  name: carol
 

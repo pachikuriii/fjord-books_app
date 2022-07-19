@@ -14,6 +14,6 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '#created_on 作成日時をdateにする時' do
-    assert reports(:one).created_on.instance_of?(Date)
+    assert_equal reports(:one).created_on, reports(:one).created_at.to_date
   end
 end
