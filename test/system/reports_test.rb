@@ -14,7 +14,7 @@ class ReportsTest < ApplicationSystemTestCase
 
   test '日報のトップページへ移動する時' do
     visit reports_url
-    assert_selector 'h1', text: '日報'
+    assert_selector 'h1', text: '日報', match: :prefer_exact
   end
 
   test '日報を新規作成する時' do
@@ -24,7 +24,8 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in '内容', with: @report.content
     click_on '登録する'
     assert_text '日報が作成されました。'
-    click_on '戻る'
+    assert_selector 'p', text: @report.title, match: :prefer_exact
+    assert_selector 'p', text: @report.content, match: :prefer_exact
   end
 
   test '日報を編集する時' do
@@ -34,7 +35,6 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in '内容', with: @report.content
     click_on '更新する'
     assert_text '日報が更新されました。'
-    click_on '戻る'
   end
 
   test '日報を削除する時' do
