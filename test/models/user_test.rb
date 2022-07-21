@@ -11,13 +11,13 @@ class UserTest < ActiveSupport::TestCase
 
   test '#following? フォローしている時' do
     assert_not @alice.following?(@bob)
-    Relationship.create(following_id: @bob.id, follower_id: @alice.id)
+    Relationship.create!(following_id: @bob.id, follower_id: @alice.id)
     assert @alice.following?(@bob)
   end
 
   test '#followed_by? フォローされている時' do
     assert_not @bob.followed_by?(@alice)
-    Relationship.create(following_id: @bob.id, follower_id: @alice.id)
+    Relationship.create!(following_id: @bob.id, follower_id: @alice.id)
     assert @bob.followed_by?(@alice)
   end
 
@@ -28,8 +28,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test '#unfollow フォロー解除する時' do
-    Relationship.create(following_id: @bob.id, follower_id: @alice.id)
-    assert Relationship.find_by(following_id: @bob.id, follower_id: @alice.id)
+    Relationship.create!(following_id: @bob.id, follower_id: @alice.id)
     @alice.unfollow(@bob)
     assert_not Relationship.find_by(following_id: @bob.id, follower_id: @alice.id)
   end
